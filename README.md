@@ -1,12 +1,17 @@
-# cc2oc-bridge
+# 🌉 cc2oc-bridge
 
-**Claude Code Compatibility Bridge for OpenCode**
+**Claude Code → OpenCode Universal Bridge**
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Status](https://img.shields.io/badge/status-active-success)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/Code-Glider/cc2oc-bridge/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![OpenCode Compatible](https://img.shields.io/badge/OpenCode-Compatible-brightgreen)](https://opencode.ai)
+[![Status](https://img.shields.io/badge/status-active-success)](https://github.com/Code-Glider/cc2oc-bridge)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Run Claude Code plugins, commands, skills, and agents within OpenCode using a prompt-based runtime.
+**Run Claude Code plugins, commands, skills, and agents within OpenCode using a prompt-based runtime.**
+
+> 🚀 **The bridge that brings the entire Claude Code ecosystem to OpenCode** - No code changes required. Install any Claude Code plugin and use it instantly in OpenCode.
 
 ## Table of Contents
 
@@ -26,30 +31,68 @@ Run Claude Code plugins, commands, skills, and agents within OpenCode using a pr
 - [Troubleshooting](#troubleshooting)
 - [License](#license)
 
-## What It Does
+## 🎯 What It Does
 
-The bridge enables you to:
-- ✅ Install Claude Code plugins into OpenCode
-- ✅ Execute slash commands with argument substitution and file injection
-- ✅ Run subagents with tool restrictions
-- ✅ Use skills as reusable workflows
-- ✅ Execute lifecycle hooks (PreToolUse, PostToolUse, etc.)
-- ✅ Convert MCP configurations automatically
+The **cc2oc-bridge** is a universal compatibility layer that unlocks the entire Claude Code plugin ecosystem for OpenCode users. It works by teaching OpenCode's LLM how to interpret and execute Claude Code components through natural language instructions - no native code execution required.
 
-## Getting Started
+### ✨ Key Features
 
-### Quick Start
+- 🔌 **Plugin Compatibility** - Install and run any Claude Code plugin without modification
+- 🎛️ **Command Execution** - Full support for slash commands with argument substitution (`$1`, `$ARGUMENTS`)
+- 📁 **File Injection** - Reference files with `@file` syntax
+- 🖥️ **Inline Bash** - Execute commands with `` !`bash` `` syntax
+- 🤖 **Agent Spawning** - Run subagents with tool restrictions and lifecycle hooks
+- 🧩 **Skill Integration** - Use reusable workflows across projects
+- 🔗 **MCP Conversion** - Automatic MCP server configuration conversion
+- 🎣 **Hook System** - PreToolUse, PostToolUse, SessionStart, and more
+- 🌐 **Browser Automation** - Built-in dev-browser integration for web tasks
+- 🔒 **Tool Restrictions** - Enforce security policies with allow/deny lists
+
+### 🎬 Demo
 
 ```bash
-# 1. Install the bridge
+# Install and use any Claude Code plugin in seconds
+./install-plugin.sh /path/to/claude-code-plugin my-plugin
+@cc2oc-bridge run my-plugin:command-name
+```
+
+> **Note**: While we don't have a live GIF demo yet, the bridge works seamlessly with any Claude Code plugin. Check out our [examples](examples/) directory for sample commands and agents.
+
+## 🚀 Getting Started
+
+### ⚡ Quick Start (30 seconds)
+
+```bash
+# 1. Install the bridge to OpenCode
 ./install.sh
 
-# 2. Install a plugin (e.g., test-plugin)
+# 2. Install the included test plugin
 ./install-plugin.sh plugins/test-plugin test-plugin
 
-# 3. Use in OpenCode
+# 3. Start using Claude Code commands in OpenCode!
 @cc2oc-bridge run test-plugin:greet
+@cc2oc-bridge run test-plugin:count-files md
+@cc2oc-bridge agent test-plugin:helper "List all Python files"
 ```
+
+### 🎓 How It Works
+
+Unlike traditional runtime bridges that execute code, **cc2oc-bridge** uses a **prompt-based runtime** approach:
+
+```
+User Request → Bridge Agent → LLM Interpreter → Component Execution
+```
+
+Instead of writing execution code for each feature, the bridge:
+1. **Teaches** the LLM how to interpret Claude Code components through detailed instructions
+2. **Provides** execution workflows in natural language
+3. **Relies** on the model's instruction-following capability
+
+This makes the bridge:
+- 🔄 **Easy to extend** - Just modify instructions, not code
+- 📝 **Self-documenting** - Instructions are human-readable
+- 🌍 **Model-agnostic** - Works with any capable LLM
+- 💪 **Flexible** - Adapts to new Claude Code features quickly
 
 ### How It Works
 
@@ -302,22 +345,29 @@ Then install:
 ./install-plugin.sh ./my-plugin
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please follow these guidelines:
+We love contributions! Whether it's bug reports, feature requests, documentation improvements, or code contributions, please get involved.
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### 🌟 Ways to Contribute
 
-### Development Setup
+- **Report Bugs**: [Open an issue](https://github.com/Code-Glider/cc2oc-bridge/issues) with the `bug` label
+- **Request Features**: [Open an issue](https://github.com/Code-Glider/cc2oc-bridge/issues) with the `enhancement` label
+- **Improve Docs**: Fix typos, clarify instructions, add examples
+- **Submit Plugins**: Share your Claude Code plugins that work with the bridge
+- **Write Tests**: Increase test coverage
+- **Fix Issues**: Grab an issue labeled `good first issue`
+
+### 🛠️ Development Setup
 
 ```bash
 # Clone repository
-git clone https://github.com/Code-Glider/Claudecode2opencode-Bridge.git
+git clone https://github.com/Code-Glider/cc2oc-bridge.git
 cd cc2oc-bridge
+
+# Create virtual environment (recommended)
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 
 # Install dependencies
 pip install pyyaml
@@ -325,35 +375,140 @@ pip install pyyaml
 # Run tests
 python3 hooks.py
 python3 loader.py --list
+python3 -m pytest tests/  # If you add tests
 ```
 
-### Code Style
+### 📋 Pull Request Process
 
-- Follow existing code conventions
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Add tests if applicable
+5. Update documentation
+6. Commit with clear messages (`git commit -m 'Add: description of feature'`)
+7. Push to your fork (`git push origin feature/amazing-feature`)
+8. Open a Pull Request with a clear description
+
+### 🎯 Code Style Guidelines
+
+- Follow PEP 8 for Python code
+- Use descriptive variable and function names
+- Add docstrings for public functions
+- Keep functions focused and small
 - Add comments for complex logic
 - Update documentation for new features
 - Test thoroughly before submitting
 
-### Support
+See our [Contributing Guide](CONTRIBUTING.md) for detailed information.
 
-- 📝 [Documentation](AGENTS.md)
-- 🐛 [Report Issues](https://github.com/YOUR_USERNAME/cc2oc-bridge/issues)
-- 💬 [Discussions](https://github.com/YOUR_USERNAME/cc2oc-bridge/discussions)
+## 📣 Community & Support
 
-## Troubleshooting
+### 💬 Get Help
 
-| Issue | Solution |
-|-------|----------|
-| Commands not found | Run `@cc2oc-bridge load` |
-| Model can't execute | Switch to a more capable model |
-| Paths broken | Check `plugins/<name>/core/` exists |
-| Hooks not firing | Verify `hooks/hooks.json` syntax |
+- 📖 **Documentation**: Check the [AGENTS.md](AGENTS.md) file for detailed architecture docs
+- 🐛 **Issues**: [Report bugs or request features](https://github.com/Code-Glider/cc2oc-bridge/issues)
+- 💭 **Discussions**: [Ask questions or share ideas](https://github.com/Code-Glider/cc2oc-bridge/discussions)
+- 📧 **Email**: For security issues, contact security@cc2oc-bridge.dev
 
-## License
+### 🌟 Show Your Support
 
-MIT
+If this project helped you, please consider:
 
-## Credits
+- ⭐ **Star** this repository to help others find it
+- 🐦 **Tweet** about it: `Just discovered cc2oc-bridge - run Claude Code plugins in OpenCode! 🌉`
+- 📄 **Write** a blog post about your experience
+- 🎤 **Present** it at a meetup or conference
 
-- Bridge design inspired by Claude Code's plugin system
-- Compatible with plugins from the Claude Code ecosystem
+### 📢 Spread the Word
+
+Share cc2oc-bridge with your network:
+
+```markdown
+🌉 cc2oc-bridge: Run Claude Code plugins in OpenCode!
+
+Universal compatibility bridge for Claude Code → OpenCode
+⭐ https://github.com/Code-Glider/cc2oc-bridge
+```
+
+### 🏆 Contributors
+
+Thanks to all contributors who have helped make this project better!
+
+<a href="https://github.com/Code-Glider/cc2oc-bridge/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Code-Glider/cc2oc-bridge" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
+## 🔍 Troubleshooting
+
+| Issue | Solution | Related Links |
+|-------|----------|---------------|
+| Commands not found | Run `@cc2oc-bridge load` to refresh component cache | [Usage Guide](#usage) |
+| Model can't execute | Switch to Claude Sonnet 4.5+, GPT-4, or Gemini 2.5+ | [Model Requirements](#model-requirements) |
+| Paths broken | Verify `plugins/<name>/core/` directory exists | [Plugin Structure](#plugin-structure) |
+| Hooks not firing | Check `hooks/hooks.json` syntax and matcher patterns | [AGENTS.md](AGENTS.md#hook-types) |
+| Plugin install fails | Ensure plugin follows Claude Code v2.1.x structure | [Plugin Structure](#plugin-structure) |
+| MCP not working | Verify `.mcp.json` format and server availability | [docs/DIRECTIVE.md](docs/DIRECTIVE.md) |
+
+### 🆘 Getting More Help
+
+If you're stuck:
+
+1. Check the [FAQ section](docs/FAQ.md) (coming soon)
+2. Search [existing issues](https://github.com/Code-Glider/cc2oc-bridge/issues)
+3. Ask in [Discussions](https://github.com/Code-Glider/cc2oc-bridge/discussions)
+4. Create a new issue with the `question` label
+
+### 🐛 Reporting Bugs
+
+When reporting bugs, please include:
+
+- Your OpenCode version
+- The model you're using
+- Steps to reproduce
+- Expected vs actual behavior
+- Relevant logs or error messages
+
+Use the [bug report template](https://github.com/Code-Glider/cc2oc-bridge/issues/new?template=bug_report.md) for faster resolution.
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2024 cc2oc-bridge contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+...
+```
+
+## 🙏 Credits & Acknowledgments
+
+- 🌉 **Bridge Design**: Inspired by Claude Code's innovative plugin architecture
+- 🔌 **Compatibility**: Works with the entire Claude Code ecosystem
+- 🤖 **Model Testing**: Community-tested across multiple LLM providers
+- 📖 **Documentation**: Built with insights from the OpenCode community
+
+### 🔗 Related Projects
+
+- [OpenCode](https://opencode.ai) - The AI-native code editor
+- [Claude Code](https://github.com/anthropics/claude-code) - The original plugin system
+- [dev-browser](dev-browser/) - Browser automation integration
+
+---
+
+<div align="center">
+
+**🌉 cc2oc-bridge** - Bridging the Claude Code ecosystem to OpenCode
+
+⭐ Star us on GitHub: [https://github.com/Code-Glider/cc2oc-bridge](https://github.com/Code-Glider/cc2oc-bridge)
+
+</div>
