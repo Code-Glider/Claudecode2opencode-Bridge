@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+
+# Node (dev-browser)
+dev-browser/node_modules/
+dev-browser/package-lock.json
+dev-browser/tmp/
+
+# Logs
+*.log
+
+# Installed plugins (except test-plugin)
+plugins/*
+!plugins/test-plugin/
+
+# Test/temporary directories
+.agent/
+.claude/
+.planning/
+.tmp/
+apps/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Temporary backup files
+*_debug.py
+.help-*
+.new-project-*

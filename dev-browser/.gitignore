@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.js
+*.js.map
+*.d.ts
+!vitest.config.ts
+!tsconfig.json
+
+# Browser data
+profiles/
+.browser-data/
+
+# Temporary files
+tmp/
+*.log
+
+# Environment
+.env
+.env.local

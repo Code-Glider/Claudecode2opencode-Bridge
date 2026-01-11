@@ -1,0 +1,36 @@
+{
+  "name": "dev-browser-service",
+  "version": "1.0.0",
+  "description": "Persistent browser automation server with LLM-friendly ARIA snapshots",
+  "type": "module",
+  "imports": {
+    "@/*": "./src/*"
+  },
+  "scripts": {
+    "start": "npx tsx scripts/start-server.ts",
+    "start:headless": "HEADLESS=true npx tsx scripts/start-server.ts",
+    "install-browsers": "npx playwright install chromium",
+    "dev": "npx tsx --watch src/index.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.19.7",
+    "@hono/node-ws": "^1.2.0",
+    "express": "^4.21.0",
+    "hono": "^4.11.1",
+    "playwright": "^1.49.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.0.0",
+    "vitest": "^2.1.0"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

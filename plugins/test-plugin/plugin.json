@@ -1,0 +1,13 @@
+{
+    "name": "test-plugin",
+    "version": "1.0.0",
+    "source": "/Users/user/Downloads/Projects/Tests/cc2oc-bridge/plugins/test-plugin",
+    "installed": "2026-01-11T17:56:07Z",
+    "structure": {
+        "commands": ".claude/commands",
+        "agents": ".claude/agents",
+        "skills": ".claude/skills",
+        "hooks": "hooks",
+        "core": "core"
+    }
+}

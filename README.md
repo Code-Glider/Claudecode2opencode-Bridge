@@ -44,12 +44,11 @@ The bridge enables you to:
 # 1. Install the bridge
 ./install.sh
 
-# 2. Install a plugin (e.g., GSD)
-git clone https://github.com/glittercowboy/get-shit-done.git /tmp/gsd
-./install-plugin.sh /tmp/gsd gsd
+# 2. Install a plugin (e.g., test-plugin)
+./install-plugin.sh plugins/test-plugin test-plugin
 
 # 3. Use in OpenCode
-@cc2oc-bridge run gsd:new-project
+@cc2oc-bridge run test-plugin:greet
 ```
 
 ### How It Works
@@ -129,7 +128,7 @@ This creates:
 
 Example:
 ```bash
-./install-plugin.sh /path/to/get-shit-done gsd
+./install-plugin.sh plugins/test-plugin test-plugin
 ```
 
 This:
@@ -156,7 +155,7 @@ This:
 
 Example:
 ```
-@cc2oc-bridge run gsd:new-project
+@cc2oc-bridge run test-plugin:greet
 @cc2oc-bridge run count-files md
 ```
 
@@ -317,7 +316,7 @@ Contributions are welcome! Please follow these guidelines:
 
 ```bash
 # Clone repository
-git clone https://github.com/YOUR_USERNAME/cc2oc-bridge.git
+git clone https://github.com/Code-Glider/Claudecode2opencode-Bridge.git
 cd cc2oc-bridge
 
 # Install dependencies

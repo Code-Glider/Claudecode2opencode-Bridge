@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "matcher": "Write|Edit",
+        "command": "echo '[HOOK] About to modify a file...'",
+        "timeout": 10
+      }
+    ],
+    "PostToolUse": [
+      {
+        "type": "command", 
+        "matcher": "Bash",
+        "command": "echo '[HOOK] Bash command completed'",
+        "once": true
+      }
+    ],
+    "SessionStart": [
+      {
+        "type": "command",
+        "command": "echo '[HOOK] Test plugin session started!'"
+      }
+    ]
+  }
+}
